@@ -6,7 +6,7 @@
       <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
         <li><a href="#">Library</a></li>
-        <li class="active">Add product</li>
+        <li class="active">View Product</li>
       </ol>
     </div>
     <div class="col-sm-6">
@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-sm-6">
           <button type="button" class="btn btn-primary">Create</button>
-          <button type="button" class="btn btn-primary">Edit</button>
+          <button type="button" class="btn btn-primary" routerLink="/edit-product">Edit</button>
       </div>
       <div class="col-sm-6">
       </div>
@@ -30,21 +30,18 @@
 <br/>
 
 
-<div class="content" >
-    <form (submit)="addItem($event)"> 
+<div class="content">
     <div class="panel panel-default">
-
+        
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-4">
                     <img src="./app/images/cart.png" style="width:100px; height:100px;"/>
                 </div>
                 <div class="col-sm-8">
-                    <h2>
-                        <md-input-container>
-                            <input md-input placeholder="Product Name" [(ngModel)]="productname" name="productname">
-                        </md-input-container>
-                    </h2>
+                    <h2>{{productname}}</h2>
+                    <p> {{productid}}</p>
+                   
                 </div>
             </div>
             <div class="row">
@@ -62,32 +59,19 @@
                             <table>
                                 <tr>
                                     <td><b>Product Type</b></td>
-                                    <td style="padding:15px 15px 15px 15px;">
-                                        <select class="form-control" [(ngModel)]="producttype" name="producttype">
-                                            <option>Add New Product</option>
-                                            <option>Mobile Phone</option>
-                                            <option>Laptops</option>
-                                            <option>Tabs</option>
-                                        </select>
-                                    </td>
+                                    <td style="padding:15px 15px 15px 15px;">{{producttype}}</td>
                                 </tr>
                                 <tr>
                                     <td><b>Internal Referance</b></td>
-                                    <td style="padding:15px 15px 15px 15px;"><input type="text" class="form-control" [(ngModel)]="internalreferance" name="internalreferance"></td>
+                                    <td style="padding:15px 15px 15px 15px;">{{internalreferance}}</td>
                                 </tr>
                                 <tr>
                                     <td><b>Barcode</b></td>
-                                    <td style="padding:15px 15px 15px 15px;"><input type="text" class="form-control" [(ngModel)]="barcode" name="barcode"></td>
+                                    <td style="padding:15px 15px 15px 15px;">{{barcode}}</td>
                                 </tr>
                                 <tr>
                                     <td><b>Inventory Policy</b></td>
-                                    <td style="padding:15px 15px 15px 15px;">
-                                        <select class="form-control" [(ngModel)]="inventorypolicy" name="inventorypolicy">
-                                            <option>Delevery</option>
-                                            <option>On shop</option>
-                                            <option>E-Shopping</option>
-                                        </select>
-                                    </td>
+                                    <td style="padding:15px 15px 15px 15px;">{{inventorypolicy}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -95,19 +79,11 @@
                             <table>
                                 <tr>
                                     <td><b>Selling Price</b></td>
-                                    <td style="padding:15px 15px 15px 15px;">
-                                        <md-input-container>
-                                            <input md-input placeholder="Rs." [(ngModel)]="sellingprice" name="sellingprice">
-                                        </md-input-container>
-                                    </td>
+                                    <td style="padding:15px 15px 15px 15px;">Rs : {{sellingprice}}</td>
                                 </tr>
                                 <tr>
                                     <td><b>Cost</b></td>
-                                    <td style="padding:15px 15px 15px 15px;">
-                                        <md-input-container>
-                                            <input md-input placeholder="Rs." [(ngModel)]="cost" name="cost">
-                                        </md-input-container>
-                                    </td>
+                                    <td style="padding:15px 15px 15px 15px;">Rs : {{cost}}</td>
                                 </tr>
 
                             </table>
@@ -118,7 +94,7 @@
                             <table>
                                 <tr>
                                     <td><b>Available Quentity</b></td>
-                                    <td style="padding:15px 15px 15px 15px;"><input type="text" class="form-control"></td>
+                                    <td style="padding:15px 15px 15px 15px;">750</td>
                                 </tr>
                             </table>
                         </div>
@@ -126,7 +102,7 @@
                             <table>
                                 <tr>
                                     <td><b>Reorder Level</b></td>
-                                    <td style="padding:15px 15px 15px 15px;"><input type="text" class="form-control" [(ngModel)]="reorderlevel" name="reorderlevel"></td>
+                                    <td style="padding:15px 15px 15px 15px;">{{reorderlevel}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -137,6 +113,7 @@
                                 <tr>
                                     <th>Store Id</th>
                                     <th>Location</th>
+                                    <th>Available Quentity</th>
                                     <th>Maximum Quentity</th>
 
                                 </tr>
@@ -145,11 +122,13 @@
                                 <tr>
                                     <td>75A55as</td>
                                     <td>Colombo</td>
+                                    <td>500</td>
                                     <td>750</td>
                                 </tr>
                                 <tr>
                                     <td>75A55as</td>
                                     <td>Colombo</td>
+                                    <td>500</td>
                                     <td>750</td>
                                 </tr>
                                 </tbody>
@@ -163,6 +142,7 @@
                                     <th>Vender ID</th>
                                     <th>Vender Name</th>
                                     <th>Outstanding Amount</th>
+                                    <th>Rank</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -170,11 +150,13 @@
                                     <td>25</td>
                                     <td>Jhone Keels</td>
                                     <td>Rs : 25000</td>
+                                    <td>5</td>
                                 </tr>
                                 <tr>
                                     <td>25</td>
                                     <td>Jhone Keels</td>
                                     <td>Rs : 25000</td>
+                                    <td>5</td>
                                 </tr>
 
                                 </tbody>
@@ -187,17 +169,18 @@
                             <table>
                                 <tr>
                                     <td><b>Warrenty</b></td>
-                                    <td style="padding:15px 15px 15px 15px;"><input type="text" class="form-control" [(ngModel)]="warrenty" name="warrenty"></td>
+                                    <td style="padding:15px 15px 15px 15px;">{{warrenty}}</td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <div id="menu3" class="tab-pane fade">
                         <div class="col-sm-6">
+                            <h3>Tax Detail</h3>
                             <table>
                                 <tr>
-                                    <td><b>Value Added Tax (VAT) %</b></td>
-                                    <td style="padding:15px 15px 15px 15px;"><input type="text" class="form-control" [(ngModel)]="vat" name="vat"></td>
+                                    <td><b>Value Added Tax (VAT)</b></td>
+                                    <td style="padding:15px 15px 15px 15px;">{{vat}}%</td>
                                 </tr>
                             </table>
                         </div>
@@ -206,20 +189,8 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-<div class="row">
-      <div class="col-sm-6">
-          <input type="submit" class="btn btn-primary" value="Save">
-          <button type="button" class="btn btn-primary">clear</button>
-      </div>
-      <div class="col-sm-6">
-      </div>
-  </div>
-
-
-    </form>
 
 </div>
 

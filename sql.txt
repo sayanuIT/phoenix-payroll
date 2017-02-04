@@ -1,0 +1,319 @@
+ERP System sql queries
+create database ERP_System;
+use ERP_System;
+
+1
+ 
+create table Supplier(
+Sup_Id int primary key,
+NIC varchar(20),
+Sup_name varchar(20),
+Dor_No varchar(6),
+Steet varchar(20),
+Zipe_code varchar(5),
+city varchar(20)
+ );
+
+
+2
+create table Department(
+Dept_Id int primary key,
+Dept_Name varchar(10),
+Section varchar(10)
+  
+ );
+ 
+ 
+ 3
+create table Warehouse(
+Wh_Id int primary key,
+location varchar(10)
+
+ );
+
+ 4
+create table Customer(
+Cust_Id int primary key,
+NIC varchar(20),
+Good_detail varchar(10),
+Date_ date,
+Qty Int );
+
+
+
+5
+create table Sales_Return_Order(
+SRO_NO  int primary key,
+Date_ date,
+Qty int,
+Amount int,
+Wh_Id int,
+Cust_Id int,
+foreign key(Wh_Id) references Warehouse(Wh_Id),
+foreign key(Cust_Id) references Customer(Cust_Id)
+ );
+
+ 
+ 
+ 6
+create table Salary_Scale(
+Salary_Id int,
+Salary_Scale_Type varchar(10),
+Basic_  int,
+primary key( Salary_Scale_Type ,Salary_Id )
+ );
+ 
+ 
+ 7
+
+  create table Employee(
+ Emp_Id  int primary key,
+ Emp_name varchar(20),
+ Desgination_Id int,
+Dor_No varchar(6),
+Steet varchar(20),
+Zipe_code varchar(5),
+city varchar(20),
+date_joined date,
+Dept_Id int,
+Salary_Scale_Type varchar(10),
+
+foreign key(Dept_Id) references Department(Dept_Id), 
+foreign key(Salary_Scale_Type) references Salary_Scale(Salary_Scale_Type),
+ 
+FOREIGN KEY(Desgination_Id)references Desgination(Desgination_Id)
+ 
+ 
+ );
+
+ 
+ 
+ 8
+create table Deduction(
+Deduction_Id int,
+Deduction_Type varchar(20),
+Amount int,
+Salary_Scale_Type varchar(10),
+primary key(Deduction_Id,Deduction_Type),
+foreign key(Salary_Scale_Type) references Salary_Scale(Salary_Scale_Type)
+ );
+
+ 9
+create table Allowance(
+Allowance_Id varchar(6) ,
+Allowance_Type varchar(20),
+Amount int,
+Salary_Scale_Type varchar(10),
+primary key(Allowance_Id,Allowance_Type),
+foreign key(Salary_Scale_Type) references Salary_Scale(Salary_Scale_Type)
+ );
+
+ 
+ 10
+ 
+ 
+create table Leavs( Leave_Id int ,
+Leave_Type varchar(20),
+Peariad int,
+Salary_Scale_Type varchar(10),
+primary key(Leave_Id, Leave_Type ), 
+foreign key(Salary_Scale_Type ) references Salary_Scale(Salary_Scale_Type)
+ );
+
+ 11
+  
+  
+  create table Purchesing_Order(
+ PO_NO int primary key,
+Description varchar(10),
+Date_ date,
+Qty int,
+Emp_Id int,
+Sup_Id int,
+foreign key(Emp_Id) references Employee(Emp_Id),
+foreign key(Sup_Id) references Supplier(Sup_Id)
+ );
+
+ 
+ 12
+create table Purchesing_Return_Order(
+PRO_NO int primary key,
+Description varchar(10),
+Date_ date,
+Qty int,
+Emp_Id int,
+Sup_Id int,
+foreign key(Emp_Id) references Employee(Emp_Id),
+foreign key(Sup_Id) references Supplier(Sup_Id)
+ );
+
+ 13
+create table Purches_Requestion_Note(
+PRN_NO int primary key,
+Description varchar(10),
+Date_ date,
+Qty int,
+Emp_Id int,
+Wh_Id int,
+foreign key(Emp_Id) references Employee(Emp_Id),
+foreign key(Wh_Id) references Warehouse(Wh_Id)
+ );
+
+ 
+ 14
+create table Sales_Order(
+ SO_NO int primary key,
+Date_ date,
+Qty int,
+Amount int,
+Wh_Id int,
+Cust_Id int,
+foreign key(Wh_Id) references Warehouse(Wh_Id),
+foreign key(Cust_Id) references Customer(Cust_Id)
+ );
+
+ 
+ 15
+create table Good_Recive_Note(
+GRN_NO int primary key,
+Description varchar(20),
+Date_ date,
+Qty int,
+Emp_Id int,
+foreign key(Emp_Id) references Employee(Emp_Id)
+
+ );
+ 
+ 
+ 16
+ 
+create table Supplier_Telepone(
+Sup_Id int ,
+TP_NO varchar(10),
+primary key(Sup_Id,TP_NO), 
+
+foreign key(Sup_Id) references Supplier(Sup_Id)
+);
+
+
+ 17
+
+create table Emp_creat_Item(
+Emp_Id int,
+Item_NO int, 
+primary key(Emp_Id,Item_NO), 
+foreign key(Emp_Id) references Employee(Emp_Id), 
+foreign key(Item_NO) references Item(Item_NO)
+
+);
+
+ 18
+ 
+
+create table Item(
+Item_NO int primary key,
+Item_Name varchar(10),
+Barcode varchar(20),
+PO_NO int,
+PRO_NO int,
+PRN_NO int,
+GRN_NO int,
+SO_NO int,
+SRO_NO int,
+foreign key(PO_NO) references Purchesing_Order(PO_NO),
+foreign key(PRO_NO) references  Purchesing_Return_Order(PRO_NO),
+foreign key(PRN_NO) references Purches_Requestion_Note(PRN_NO),
+foreign key(GRN_NO) references Good_Recive_Note(GRN_NO),
+foreign key(SO_NO) references Sales_Order(SO_NO),
+foreign key(SRO_NO) references Sales_Return_Order(SRO_NO)
+
+ );
+
+
+ 
+ 19
+ 
+ 
+create table Emp_Approve_Item(
+Emp_ID int,
+Item_NO int, 
+primary key(Emp_Id,Item_NO), 
+foreign key(Emp_Id) references Employee(Emp_Id), 
+foreign key(Item_NO) references Item(Item_NO)
+);
+
+ 
+ 20
+ 
+ 
+create table Employee_Telepone(
+Emp_ID int,
+TP_NO varchar(10),
+primary key(Emp_Id,TP_NO), 
+
+foreign key(Emp_Id) references Employee(Emp_Id)
+);
+
+21
+
+create table Attendance(
+Emp_ID int,
+Reco_NO int,
+Date_ date,
+Arival_Time time,
+Deparur_Time time,
+primary key(Emp_Id,Reco_NO),
+foreign key(Emp_Id) references Employee(Emp_Id)
+ );
+22.
+create table Dsgination(
+ Desgination_Id int primary key,
+Desgination varchar(20),
+);
+ 
+ 
+ 
+ 
+ 
+ 
+insert  into Employee values (001,'Mr.Perera',001,'production Manager','No.120','main road','255','Moratuwa',2016-11-12,01,'Manager');
+ 
+insert  into Item values (001,'Tape','00010100101',001,001,001,001,001,001);
+ 
+insert  into Supplier values (001,'921511698V','Piyasena & sons','No10','2nd lane','912','Katubedda');
+
+insert  into department values (01,'Production','Printing');
+ 
+insert  into  Warehouse values(001,'Kelaniya');
+
+insert  into Customer  values (001,'92511698V','Papers',2016-11-24,500);
+
+insert  into Sales_Return_Order values (001,2016-11-20,200,3000,001,001);
+
+insert  into Salary_Scale values (001,'Manager',30000);
+
+insert  into Deduction values (001,'Loan',10000,'Manager');
+
+insert  into Allowance values (001,'Medicine',10000,'Manager');
+
+insert  into Leavs values (001,'Short_leave',1,'Manager');
+
+insert  into Purchesing_Order values (001,'Papers',2016-11-10,500,001,001);
+ 
+insert  into Purchesing_Return_Order values (001,'Papers',2016-11-12,50,001,001);
+
+insert  into Purches_Requestion_Note values (001,'stamps',2016-10-12,100,001,001);
+
+insert  into Sales_Order values (001,2016-11-12,50,1000,001,001);
+
+insert  into Good_Recive_Note values (001,'stamps',2016-05-12,100,001);
+
+insert  into Supplier_Telepone values (001,'0713452345');
+
+insert  into Emp_creat_Item values (001,001);
+insert  into Emp_Approve_Item values (001,001);
+
+insert  into  Employee_Telepone values (001,'0713452345');
+
+insert  into Attendance values (001,001,2016-11-24,0800,1700);
+insert  into Attendance values (001,Manager);

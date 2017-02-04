@@ -19,9 +19,9 @@ export class PurchaseOrderComponent{
   constructor(private poservice:PurchaseOrderService) { 
     this.poservice.getPoItems()
       .subscribe(items => {
-          console.log(items);
+          //console.log(items);
           this.poItems=items;
-          console.log(this.poItems);
+          //console.log(this.poItems);
       });
 
   }

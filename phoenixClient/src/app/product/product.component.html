@@ -80,7 +80,8 @@
 
 
 
-      <div class="col-sm-4">
+      <div class="col-sm-4" routerLink="/addproduct" *ngFor="let product of product" (click)="onSelect(product)">
+          
           <div class="panel panel-danger">
             <div class="row">
               <div class="col-sm-4">
@@ -88,142 +89,23 @@
               </div>
               <div class="col-sm-8">
                   <div class="panel-body">
-                    <h4>Samsung note7</h4>
-                    <p>Price: Rs 100000</p>
-                    <p>Cost : Rs 50000</p>
+                    <h4>{{product.productname}}</h4>
+                    <p>Price: {{product.sellingprice}}</p>
+                    <p>Cost: {{product.cost}}</p>
                     <p>On Stock: 200000</p>
                   </div>
               </div>
             </div>
           </div>
-      </div>
 
-      <div class="col-sm-4">
-          <div class="panel panel-danger">
-            <div class="row">
-              <div class="col-sm-4">
-                  <img src="./app/images/cart.png" style="width:100px; height:100px;"/>
-              </div>
-              <div class="col-sm-8">
-                  <div class="panel-body">
-                    <h4>Samsung note7</h4>
-                    <p>Price: Rs 100000</p>
-                    <p>Cost : Rs 50000</p>
-                    <p>On Stock: 200000</p>
-                  </div>
-              </div>
-            </div>
-          </div>
       </div>
+        
 
-      <div class="col-sm-4">
-          <div class="panel panel-danger">
-            <div class="row">
-              <div class="col-sm-4">
-                  <img src="./app/images/cart.png" style="width:100px; height:100px;"/>
-              </div>
-              <div class="col-sm-8">
-                  <div class="panel-body">
-                    <h4>Samsung note7</h4>
-                    <p>Price: Rs 100000</p>
-                    <p>Cost : Rs 50000</p>
-                    <p>On Stock: 200000</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-      </div>
 
-      <div class="col-sm-4">
-          <div class="panel panel-danger">
-            <div class="row">
-              <div class="col-sm-4">
-                  <img src="./app/images/cart.png" style="width:100px; height:100px;"/>
-              </div>
-              <div class="col-sm-8">
-                  <div class="panel-body">
-                    <h4>Samsung note7</h4>
-                    <p>Price: Rs 100000</p>
-                    <p>Cost : Rs 50000</p>
-                    <p>On Stock: 200000</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-      </div>
 
-      <div class="col-sm-4">
-          <div class="panel panel-danger">
-            <div class="row">
-              <div class="col-sm-4">
-                  <img src="./app/images/cart.png" style="width:100px; height:100px;"/>
-              </div>
-              <div class="col-sm-8">
-                  <div class="panel-body">
-                    <h4>Samsung note7</h4>
-                    <p>Price: Rs 100000</p>
-                    <p>Cost : Rs 50000</p>
-                    <p>On Stock: 200000</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-      </div>
 
-      <div class="col-sm-4">
-          <div class="panel panel-danger">
-            <div class="row">
-              <div class="col-sm-4">
-                  <img src="./app/images/cart.png" style="width:100px; height:100px;"/>
-              </div>
-              <div class="col-sm-8">
-                  <div class="panel-body">
-                    <h4>Samsung note7</h4>
-                    <p>Price: Rs 100000</p>
-                    <p>Cost : Rs 50000</p>
-                    <p>On Stock: 200000</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="col-sm-4">
-          <div class="panel panel-danger">
-            <div class="row">
-              <div class="col-sm-4">
-                  <img src="./app/images/cart.png" style="width:100px; height:100px;"/>
-              </div>
-              <div class="col-sm-8">
-                  <div class="panel-body">
-                    <h4>Samsung note7</h4>
-                    <p>Price: Rs 100000</p>
-                    <p>Cost : Rs 50000</p>
-                    <p>On Stock: 200000</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="col-sm-4">
-          <div class="panel panel-danger">
-            <div class="row">
-              <div class="col-sm-4">
-                  <img src="./app/images/cart.png" style="width:100px; height:100px;"/>
-              </div>
-              <div class="col-sm-8">
-                  <div class="panel-body">
-                    <h4>Samsung note7</h4>
-                    <p>Price: Rs 100000</p>
-                    <p>Cost : Rs 50000</p>
-                    <p>On Stock: 200000</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-      </div>
 
     </div>
+    
 </div>
 

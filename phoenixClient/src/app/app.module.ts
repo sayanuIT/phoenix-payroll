@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
-import { RouterModule, Routes } from '@angular/router';
-
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { routingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { FrameComponent } from './frame/frame.component';
@@ -13,26 +14,28 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductComponent } from './product/product.component';
+import { EditComponent } from './edit/edit.component';
+import { ViewProductComponent } from './view-product/view-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    routingComponents,
     FrameComponent,
     SideMenuComponent,
     PurchaseOrderComponent,
     AddProductComponent,
-    ProductComponent
+    ProductComponent,
+    EditComponent,
+    ViewProductComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     [MaterialModule.forRoot()],
-    RouterModule.forRoot([
-      { path: 'addproduct', component: AddProductComponent},
-      { path: 'product', component:ProductComponent}, 
-      { path: 'purchaseorder', component:PurchaseOrderComponent}
-    ])
+    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
